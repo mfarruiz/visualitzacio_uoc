@@ -6,7 +6,6 @@ library(dplyr)
 
 library(plotly)
 
-
 df <- read.csv2("Corruption perceptions Index - Index.csv", sep = ",", encoding = "UTF-8")
 
 p <- df  %>%
@@ -26,16 +25,16 @@ p <- df  %>%
   ylab("Continent") + 
   theme(legend.position="none",plot.title = element_text( size=16, face="bold"),
         plot.subtitle = element_text(size=14),
-        axis.title.x = element_text( size=12),
-        axis.title.y = element_text( size=12))
-
+        axis.title.x = element_text( size=14, face="bold"),
+        axis.title.y = element_text( size=14, face="bold"))
 
 
 # turn ggplot interactive with plotly
 pp <- ggplotly(p, tooltip="text")%>% layout(title = list(text = paste0('Índex de percepció de corrupció',
                                                                    '<br>',
                                                                    '<sup>',
-                                                                   'Puntuacions més altes indiquen menor corrupció al país','</sup>')))
+                                                                   'Puntuacions més altes indiquen menor corrupció al país. Font: https://www.transparency.org/en/cpi/2024/','</sup>')))
+
 pp
 
 # save the widget
